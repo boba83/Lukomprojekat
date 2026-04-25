@@ -1,0 +1,1201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Osnovni reset za slučaj da nešto promakne */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(circle at top left, #1e293b 0, #020617 45%, #020617 100%);
+  color: #e5e7eb;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Layout */
+.lukom-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at top left, #1e293b 0, #020617 45%, #020617 100%);
+}
+
+.lukom-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  background: linear-gradient(to right, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.94));
+  backdrop-filter: blur(16px);
+}
+
+.lukom-header-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.lukom-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #f9fafb;
+}
+
+.lukom-logo-image {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgba(249, 115, 22, 0.6));
+}
+
+.lukom-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.lukom-logo-main {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 14px;
+  color: #f9fafb;
+}
+
+.lukom-logo-sub {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+}
+
+.lukom-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 14px;
+}
+
+.lukom-nav-link {
+  position: relative;
+  color: #cbd5f5;
+  text-decoration: none;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.lukom-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #f97316, #fb923c);
+  transition: width 0.2s ease;
+}
+
+.lukom-nav-link:hover {
+  color: #f9fafb;
+}
+
+.lukom-nav-link:hover::after,
+.lukom-nav-link-active::after {
+  width: 100%;
+}
+
+.lukom-nav-link-active {
+  color: #fef3c7;
+}
+
+.lukom-call-button {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #f97316, #ea580c);
+  color: #fff7ed;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(248, 113, 22, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lukom-call-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(248, 113, 22, 0.6);
+}
+
+.lukom-main {
+  flex: 1;
+  background: #f8fafc;
+}
+
+/* Kontakt stranica – svetla podloga i taman tekst */
+.lukom-contact-page {
+  background: #f5f6f8;
+  color: #111827;
+}
+
+.lukom-contact-page section {
+  color: inherit;
+}
+
+.lukom-footer {
+  border-top: 1px solid rgba(15, 23, 42, 1);
+  background: #020617;
+  color: #e5e7eb;
+  padding: 44px 16px 26px;
+  font-size: 13px;
+}
+
+.lukom-footer-inner {
+  max-width: 1120px;
+  margin: 0 auto 16px;
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 900px) {
+  .lukom-footer-inner {
+    grid-template-columns: 1.4fr 1.1fr 1.1fr;
+  }
+}
+
+.lukom-footer-col h4 {
+  margin: 0 0 10px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+}
+
+.lukom-footer-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 4px;
+  color: #e5e7eb;
+}
+
+.lukom-footer-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  margin-top: 2px;
+  color: #f97316;
+}
+
+.lukom-footer-row span:last-child {
+  font-size: 13px;
+}
+
+.lukom-footer-note {
+  margin: 6px 0 0 26px;
+  font-size: 13px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+
+.lukom-footer-bottom {
+  max-width: 1120px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(15, 23, 42, 0.9);
+  padding-top: 10px;
+  font-size: 11px;
+  color: #6b7280;
+  text-align: left;
+}
+
+/* Animacija belog auta u footeru */
+@media (min-width: 900px) {
+  .lukom-footer-car-layer {
+    position: relative;
+    max-width: 1120px;
+    margin: 4px auto 0;
+    height: 80px;
+    pointer-events: none;
+  }
+
+  .lukom-footer-road {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      rgba(15, 23, 42, 0.4),
+      rgba(30, 64, 175, 0.6),
+      rgba(15, 23, 42, 0.4)
+    );
+    opacity: 0.7;
+  }
+
+  .lukom-footer-car {
+    position: absolute;
+    bottom: 22px;
+    left: -110px;
+    width: 82px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: lukom-car-drive 3.6s ease-out 0.5s forwards;
+  }
+
+  .lukom-footer-car-image {
+    height: 64px;
+    width: auto;
+    transform: scaleX(1);
+    filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.9));
+  }
+
+  .lukom-car-smoke {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: radial-gradient(
+      circle at 30% 30%,
+      rgba(229, 231, 235, 0.9),
+      rgba(148, 163, 184, 0.55)
+    );
+    filter: blur(2px);
+    opacity: 0;
+  }
+
+  .lukom-car-smoke-1 {
+    animation: lukom-car-smoke 1.6s ease-out 2.6s forwards;
+  }
+
+  .lukom-car-smoke-2 {
+    animation: lukom-car-smoke 1.8s ease-out 2.8s forwards;
+  }
+
+  .lukom-car-smoke-3 {
+    animation: lukom-car-smoke 2s ease-out 3s forwards;
+  }
+
+  .lukom-car-smoke-4 {
+    width: 14px;
+    height: 14px;
+    bottom: 22px;
+    animation: lukom-car-smoke 2.2s ease-out 3.1s forwards;
+  }
+
+  .lukom-car-smoke-5 {
+    width: 10px;
+    height: 10px;
+    bottom: 24px;
+    animation: lukom-car-smoke 2.4s ease-out 3.2s forwards;
+  }
+}
+
+@keyframes lukom-car-drive {
+  0% {
+    transform: translateX(0);
+  }
+  65% {
+    transform: translateX(980px);
+  }
+  100% {
+    transform: translateX(960px);
+  }
+}
+
+@keyframes lukom-car-smoke {
+  0% {
+    transform: translate(-6px, 0);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-32px, -18px);
+    opacity: 0;
+  }
+}
+
+.lukom-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lukom-footer-logo-image {
+  width: 40px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Hero sekcija */
+.lukom-hero {
+  padding: 72px 16px 80px;
+  background: radial-gradient(circle at top left, #1e293b 0, #020617 45%, #020617 100%);
+}
+
+@media (min-width: 768px) {
+  .lukom-hero {
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+}
+
+.lukom-hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lukom-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fed7aa;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(248, 153, 80, 0.6);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.8);
+  margin-bottom: 18px;
+}
+
+.lukom-hero-title {
+  margin: 0 0 16px;
+  font-size: clamp(44px, 6vw, 64px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.lukom-hero-title-line {
+  display: block;
+}
+
+.lukom-hero-title-line.accent {
+  color: #fb923c;
+}
+
+.lukom-hero-subtitle {
+  max-width: 540px;
+  margin: 0 auto 28px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #cbd5f5;
+}
+
+.lukom-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.lukom-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 20px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease,
+    color 0.15s ease, border-color 0.15s ease;
+}
+
+.lukom-btn-primary {
+  background: linear-gradient(to right, #f97316, #ea580c);
+  color: #fff7ed;
+  box-shadow: 0 14px 40px rgba(248, 113, 22, 0.55);
+}
+
+.lukom-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 50px rgba(248, 113, 22, 0.7);
+}
+
+.lukom-btn-secondary {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(148, 163, 184, 0.5);
+  color: #e5e7eb;
+}
+
+.lukom-btn-secondary:hover {
+  border-color: rgba(248, 153, 80, 0.9);
+  color: #fed7aa;
+}
+
+.lukom-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* Sekcije ispod hero-a */
+.lukom-section {
+  padding: 56px 16px;
+}
+
+@media (min-width: 768px) {
+  .lukom-section {
+    padding: 72px 16px;
+  }
+}
+
+.lukom-section-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.lukom-section-brands {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.lukom-section-assortment {
+  background: #020617;
+}
+
+.lukom-section-about {
+  background: #f9fafb;
+  color: #0f172a;
+}
+
+.lukom-section-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  font-weight: 600;
+  color: #f97316;
+  margin-bottom: 8px;
+}
+
+.lukom-section-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.lukom-section-title .accent {
+  color: #f97316;
+}
+
+.lukom-section-divider {
+  width: 56px;
+  height: 3px;
+  border-radius: 999px;
+  background: #f97316;
+  margin: 18px 0 28px;
+}
+
+/* Brendovi */
+.lukom-brands-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.lukom-brand-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.lukom-brand-code {
+  width: 32px;
+  height: 32px;
+  border-radius: 12px;
+  background: #f97316;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fef3c7;
+}
+
+.lukom-brand-name {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lukom-brands-more {
+  margin-top: 18px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Asortiman kartice */
+.lukom-assortment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.lukom-assortment-card {
+  background: #020617;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  padding: 20px 20px 22px;
+  color: #e5e7eb;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+}
+
+.lukom-assortment-card h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+
+.lukom-assortment-card p {
+  margin: 0;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.lukom-assortment-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 14px;
+  background: rgba(248, 148, 80, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+/* O nama */
+.lukom-about-grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .lukom-about-grid {
+    grid-template-columns: 1.6fr 1.1fr;
+    align-items: start;
+  }
+}
+
+.lukom-about-text p {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.lukom-about-info {
+  display: grid;
+  gap: 10px;
+}
+
+.lukom-about-item {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.lukom-about-item h4 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #020617;
+}
+
+.lukom-about-item-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.lukom-about-item-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 12px;
+  background: rgba(248, 148, 80, 0.16);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #ea580c;
+}
+
+/* CTA narandžasti blok */
+.lukom-cta {
+  background: linear-gradient(to bottom, #f97316, #ea580c);
+  color: #fff7ed;
+  padding: 48px 16px 52px;
+  text-align: center;
+}
+
+.lukom-cta-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.lukom-cta h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.lukom-cta p {
+  margin: 0 0 20px;
+  font-size: 14px;
+}
+
+.lukom-cta-phone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #ea580c;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 14px 40px rgba(148, 27, 0, 0.4);
+}
+
+/* Donji info blok iznad footera */
+.lukom-bottom-info {
+  background: #020617;
+  color: #e5e7eb;
+  padding: 40px 16px 32px;
+}
+
+.lukom-bottom-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .lukom-bottom-inner {
+    grid-template-columns: 1.4fr 1.1fr 1.1fr;
+  }
+}
+
+.lukom-bottom-col h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.lukom-bottom-col p {
+  margin: 0 0 4px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.lukom-bottom-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.lukom-bottom-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 12px;
+  background: rgba(248, 148, 80, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #f97316;
+}
+
+/* Dokumentacija kartice */
+.lukom-docs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.lukom-doc-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  padding: 20px 20px 22px;
+  box-shadow: 0 18px 40px rgba(148, 163, 184, 0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.lukom-doc-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 50px rgba(148, 163, 184, 0.35);
+  border-color: #fed7aa;
+}
+
+.lukom-doc-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 16px;
+  background: #020617;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #f97316;
+  margin-bottom: 14px;
+}
+
+.lukom-doc-card:hover .lukom-doc-icon {
+  background: #f97316;
+  color: #ffffff;
+}
+
+.lukom-doc-tag {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #f97316;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.lukom-doc-card h2 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #020617;
+}
+
+.lukom-doc-card p {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.lukom-doc-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #f97316;
+  color: #fff7ed;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.lukom-doc-legal {
+  margin-top: 8px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #fefce8;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.lukom-doc-legal-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #f97316;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff7ed;
+  font-size: 14px;
+}
+
+.lukom-doc-legal-title {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.lukom-doc-legal-text a {
+  color: #f97316;
+  text-decoration: none;
+}
+
+/* Kontakt stranica header */
+.lukom-contact-hero {
+  background: linear-gradient(to bottom, #020617, #020617);
+  padding: 80px 16px 56px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .lukom-contact-hero {
+    padding-top: 96px;
+    padding-bottom: 72px;
+  }
+}
+
+.lukom-contact-hero-inner {
+  color: #f9fafb;
+}
+
+.lukom-contact-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  font-weight: 600;
+  color: #f97316;
+  margin: 0 0 10px;
+}
+
+.lukom-contact-title {
+  margin: 0;
+  font-size: clamp(32px, 5vw, 42px);
+  font-weight: 700;
+}
+
+.lukom-doc-hero-subtitle {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: #cbd5f5;
+}
+
+.lukom-contact-divider {
+  width: 56px;
+  height: 3px;
+  border-radius: 999px;
+  background: #f97316;
+  margin: 18px auto 0;
+}
+
+/* Kontakt – bela sekcija ispod hero dela */
+.lukom-contact-body {
+  padding: 56px 16px 72px;
+}
+
+@media (min-width: 768px) {
+  .lukom-contact-body {
+    padding-top: 72px;
+    padding-bottom: 88px;
+  }
+}
+
+/* Kontakt – glavni layout ispod hero dela */
+.lukom-contact-intro-block {
+  max-width: 520px;
+  margin: 0 0 20px;
+}
+
+.lukom-contact-intro-text {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.lukom-contact-main {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 900px) {
+  .lukom-contact-main {
+    grid-template-columns: 1.1fr 1.4fr;
+    align-items: flex-start;
+  }
+}
+
+.lukom-contact-form-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 18px 40px rgba(148, 163, 184, 0.18);
+  padding: 20px 20px 22px;
+}
+
+.lukom-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lukom-contact-row {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .lukom-contact-row-two {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+
+.lukom-contact-field label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+.lukom-contact-field input,
+.lukom-contact-field textarea {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  padding: 9px 11px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lukom-contact-field textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+.lukom-contact-field input:focus,
+.lukom-contact-field textarea:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.4);
+}
+
+.lukom-contact-submit {
+  margin-top: 8px;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff7ed;
+  cursor: pointer;
+  background: linear-gradient(to right, #f97316, #ea580c);
+  box-shadow: 0 14px 40px rgba(248, 113, 22, 0.55);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.lukom-contact-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 50px rgba(248, 113, 22, 0.7);
+}
+
+.lukom-contact-status {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.lukom-contact-status-success {
+  color: #16a34a;
+}
+
+.lukom-contact-status-error {
+  color: #dc2626;
+}
+
+.lukom-contact-map {
+  margin-top: 32px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(148, 163, 184, 0.25);
+  border: 1px solid #e5e7eb;
+}
+
+.lukom-contact-map iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+}
+
+@media (min-width: 900px) {
+  .lukom-contact-map iframe {
+    height: 360px;
+  }
+}
+
+/* Galerija */
+.lukom-gallery-body {
+  background: #f5f6f8;
+  padding: 40px 16px 72px;
+}
+
+.lukom-gallery-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.lukom-gallery-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 14px 28px rgba(148, 163, 184, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lukom-gallery-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(148, 163, 184, 0.3);
+}
+
+.lukom-gallery-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.lukom-gallery-label {
+  padding: 10px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  background: #f8fafc;
+}
+
+.lukom-gallery-card-trigger {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.lukom-gallery-body-shop {
+  padding-top: 0;
+  padding-bottom: 80px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.lukom-gallery-section-title {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.lukom-gallery-section-lead {
+  margin: 0 0 24px;
+  max-width: 640px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+.lukom-gallery-shop-placeholder {
+  margin: 0;
+  padding: 20px 18px;
+  border-radius: 14px;
+  border: 1px dashed #cbd5e1;
+  background: #f8fafc;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.lukom-gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: rgba(15, 23, 42, 0.88);
+}
+
+.lukom-gallery-lightbox-inner {
+  max-width: min(1100px, 100%);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.lukom-gallery-lightbox-inner img {
+  max-width: 100%;
+  max-height: calc(90vh - 48px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+}
+
+.lukom-gallery-lightbox-caption {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.lukom-gallery-lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.65);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.lukom-gallery-lightbox-close:hover {
+  background: rgba(249, 115, 22, 0.95);
+  transform: scale(1.05);
+}
+
+
+
