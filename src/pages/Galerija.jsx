@@ -26,11 +26,6 @@ const GALLERY_IMAGES = [
 /** Dodaj ovde nove slike prodavnice (fajl u public/galerija/ …). */
 const SHOP_GALLERY = [
   {
-    src: "/galerija/prodavnica-proizvodi-1.png",
-    alt: "Asortiman proizvoda u LUKOM prodavnici",
-    label: "Proizvodi u prodavnici",
-  },
-  {
     src: "/galerija/prodavnica-proizvodi-2.png",
     alt: "Širok asortiman delova na policama",
     label: "Asortiman delova",
@@ -64,6 +59,31 @@ const SHOP_GALLERY = [
     src: "/galerija/prodavnica-proizvodi-8.png",
     alt: "Pult i široka ponuda akumulatora i delova",
     label: "Pult i ponuda proizvoda",
+  },
+  {
+    src: "/galerija/prodavnica-proizvodi-9.png",
+    alt: "Creva i vodovi izloženi na zidu",
+    label: "Creva i vodovi",
+  },
+  {
+    src: "/galerija/prodavnica-proizvodi-10.png",
+    alt: "Stop svetla i signalizacija na policama",
+    label: "Svetlosna signalizacija",
+  },
+  {
+    src: "/galerija/prodavnica-proizvodi-11.png",
+    alt: "Hladnjaci i rashladni elementi",
+    label: "Hladnjaci i rashlada",
+  },
+  {
+    src: "/galerija/prodavnica-proizvodi-12.png",
+    alt: "Police sa kutijama i filterima",
+    label: "Police sa delovima",
+  },
+  {
+    src: "/galerija/prodavnica-proizvodi-13.png",
+    alt: "Ulja, maziva i dodatni program na policama",
+    label: "Ulja i maziva",
   },
 ];
 
