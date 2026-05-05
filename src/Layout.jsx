@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Clock, Mail, MapPin, Phone, Printer, Smartphone } from "lucide-react";
 
-const navItems = ["Home", "Galerija", "Kategorija", "Dokumentacija", "Kontakt", "Test"];
+const navItems = ["Home", "Galerija", "Kategorija", "Dokumentacija", "Kontakt"];
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
@@ -13,7 +13,7 @@ export default function Layout({ children, currentPageName }) {
         <div className="lukom-header-inner">
           <Link to="/" className="lukom-logo">
             <img
-              src="/lukom-speedometer.svg"
+              src="/lukom-logo.png"
               alt="LUKOM Auto Delovi"
               className="lukom-logo-image"
             />
@@ -51,7 +51,7 @@ export default function Layout({ children, currentPageName }) {
           <div className="lukom-footer-col">
             <div className="lukom-footer-logo">
               <img
-                src="/lukom-speedometer.svg"
+                src="/lukom-logo.png"
                 alt="LUKOM Auto Delovi"
                 className="lukom-footer-logo-image"
               />

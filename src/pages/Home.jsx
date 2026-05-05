@@ -41,8 +41,10 @@ export default function Home() {
             <span className="lukom-hero-title-line accent">Auto Delovi</span>
           </h1>
           <p className="lukom-hero-subtitle">
-            Sve za Vaš automobil, moped, motor, traktor i kamion — na jednom
-            mestu. Originalni i zamenski delovi renomiranih svetskih brendova.
+            Auto delovi u Bajinoj Bašti i okolini — delovi za kola, traktore,
+            motore i teretna vozila. Kočnice i diskovi, ulja i maziva, filteri,
+            elektrika, amortizeri i širok izbor rezervnih delova na jednom mestu.
+            Originalni i zamenski delovi renomiranih svetskih brendova.
           </p>
           <div className="lukom-hero-actions">
             <a href="/Kontakt" className="lukom-btn lukom-btn-primary">
@@ -87,6 +89,12 @@ export default function Home() {
         <div className="lukom-section-inner">
           <p className="lukom-section-eyebrow">ASORTIMAN</p>
           <h2 className="lukom-section-title">Sve na jednom mestu</h2>
+          <p className="lukom-section-lead lukom-assortment-lead">
+            Kod nas u LUKOM-u u Bajinoj Bašti nabavljate auto delove za svakodnevna
+            kretanja i poljoprivredu: od filtra i ulja do kompleta kočnica i diskova,
+            setova remenica, delova motora, reduktora i opreme za traktore —
+            porodična radnja, savet i lager prilagođen regionu.
+          </p>
           <div className="lukom-section-divider" />
 
           <div className="lukom-assortment-grid">

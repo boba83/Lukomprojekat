@@ -52,7 +52,6 @@ import Galerija from './pages/Galerija';
 import Home from './pages/Home';
 import Kategorija from './pages/Kategorija';
 import Kontakt from './pages/Kontakt';
-import Test from './pages/Test';
 import __Layout from './Layout.jsx';
 
 
@@ -62,7 +61,6 @@ export const PAGES = {
     "Home": Home,
     "Kategorija": Kategorija,
     "Kontakt": Kontakt,
-    "Test": Test,
 }
 
 export const pagesConfig = {
