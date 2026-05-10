@@ -32,8 +32,12 @@ export default function Kontakt() {
     setStatus({ loading: true, success: "", error: "" });
 
     try {
+      const isLocalDev =
+        typeof window !== "undefined" &&
+        ["localhost", "127.0.0.1"].includes(window.location.hostname);
       const apiBase =
-        import.meta.env.VITE_API_URL || "http://localhost:3001";
+        import.meta.env.VITE_API_URL ||
+        (isLocalDev ? "http://localhost:3001" : "");
       const response = await fetch(`${apiBase}/api/contact`, {
         method: "POST",
         headers: {
