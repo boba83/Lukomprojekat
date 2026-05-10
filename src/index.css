@@ -55,6 +55,7 @@ body {
 }
 
 .lukom-header-inner {
+  position: relative;
   max-width: 1120px;
   margin: 0 auto;
   padding: 18px 24px;
@@ -158,6 +159,97 @@ body {
   box-shadow: 0 16px 40px rgba(248, 113, 22, 0.6);
 }
 
+.lukom-call-button-mobile {
+  display: none;
+}
+
+.lukom-burger {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.6);
+  color: #f9fafb;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.lukom-burger:hover {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(249, 115, 22, 0.5);
+}
+
+@media (max-width: 860px) {
+  .lukom-header-inner {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .lukom-burger {
+    display: inline-flex;
+  }
+
+  .lukom-call-button-desktop {
+    display: none;
+  }
+
+  .lukom-nav {
+    position: absolute;
+    top: 100%;
+    right: 12px;
+    left: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 14px;
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(148, 163, 184, 0.18);
+    box-shadow: 0 22px 50px rgba(2, 6, 23, 0.55);
+    backdrop-filter: blur(12px);
+    transform-origin: top right;
+    transform: scale(0.96);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    z-index: 20;
+  }
+
+  .lukom-nav.lukom-nav-open {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }
+
+  .lukom-nav .lukom-nav-link {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #e2e8f0;
+  }
+
+  .lukom-nav .lukom-nav-link:hover,
+  .lukom-nav .lukom-nav-link-active {
+    background: rgba(249, 115, 22, 0.12);
+    color: #fef3c7;
+  }
+
+  .lukom-nav .lukom-nav-link::after {
+    display: none;
+  }
+
+  .lukom-call-button-mobile {
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 6px;
+    text-align: center;
+  }
+}
+
 .lukom-main {
   flex: 1;
   background: #f8fafc;
@@ -241,90 +333,162 @@ body {
   text-align: left;
 }
 
-/* Animacija belog auta u footeru */
+/* Animacija auta u footeru — svi ekrani (mobilni: manji auto, animacija po širini sloja) */
+.lukom-footer-car-layer {
+  position: relative;
+  max-width: 1120px;
+  margin: 10px auto 0;
+  height: 58px;
+  overflow: hidden;
+  pointer-events: none;
+  padding: 0 14px;
+  box-sizing: border-box;
+}
+
+.lukom-footer-road {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 8px;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.4),
+    rgba(30, 64, 175, 0.6),
+    rgba(15, 23, 42, 0.4)
+  );
+  opacity: 0.7;
+}
+
+.lukom-footer-car {
+  position: absolute;
+  bottom: 16px;
+  left: -52px;
+  width: 56px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lukom-car-drive-mobile 6.5s ease-out 0.6s forwards;
+}
+
+.lukom-footer-car-image {
+  height: 42px;
+  width: auto;
+  transform: scaleX(1);
+  filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.85));
+}
+
+.lukom-car-smoke {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(229, 231, 235, 0.9),
+    rgba(148, 163, 184, 0.55)
+  );
+  filter: blur(2px);
+  opacity: 0;
+}
+
+.lukom-car-smoke-1 {
+  animation: lukom-car-smoke 1.8s ease-out 5.4s forwards;
+}
+
+.lukom-car-smoke-2 {
+  animation: lukom-car-smoke 2s ease-out 5.6s forwards;
+}
+
+.lukom-car-smoke-3 {
+  animation: lukom-car-smoke 2.2s ease-out 5.8s forwards;
+}
+
+.lukom-car-smoke-4 {
+  width: 11px;
+  height: 11px;
+  bottom: 18px;
+  animation: lukom-car-smoke 2.4s ease-out 6s forwards;
+}
+
+.lukom-car-smoke-5 {
+  width: 8px;
+  height: 8px;
+  bottom: 19px;
+  animation: lukom-car-smoke 2.5s ease-out 6.15s forwards;
+}
+
 @media (min-width: 900px) {
   .lukom-footer-car-layer {
-    position: relative;
-    max-width: 1120px;
     margin: 4px auto 0;
     height: 80px;
-    pointer-events: none;
+    padding: 0;
   }
 
   .lukom-footer-road {
-    position: absolute;
     left: 0;
     right: 0;
     bottom: 10px;
-    height: 2px;
-    background: linear-gradient(
-      to right,
-      rgba(15, 23, 42, 0.4),
-      rgba(30, 64, 175, 0.6),
-      rgba(15, 23, 42, 0.4)
-    );
-    opacity: 0.7;
   }
 
   .lukom-footer-car {
-    position: absolute;
     bottom: 22px;
     left: -110px;
     width: 82px;
     height: 34px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: lukom-car-drive 3.6s ease-out 0.5s forwards;
+    animation: lukom-car-drive 6.5s ease-out 0.6s forwards;
   }
 
   .lukom-footer-car-image {
     height: 64px;
-    width: auto;
-    transform: scaleX(1);
     filter: drop-shadow(0 0 10px rgba(249, 115, 22, 0.9));
   }
 
   .lukom-car-smoke {
-    position: absolute;
     bottom: 20px;
-    left: 0;
     width: 18px;
     height: 18px;
-    border-radius: 999px;
-    background: radial-gradient(
-      circle at 30% 30%,
-      rgba(229, 231, 235, 0.9),
-      rgba(148, 163, 184, 0.55)
-    );
-    filter: blur(2px);
-    opacity: 0;
   }
 
   .lukom-car-smoke-1 {
-    animation: lukom-car-smoke 1.6s ease-out 2.6s forwards;
+    animation: lukom-car-smoke 2s ease-out 5.6s forwards;
   }
 
   .lukom-car-smoke-2 {
-    animation: lukom-car-smoke 1.8s ease-out 2.8s forwards;
+    animation: lukom-car-smoke 2.2s ease-out 5.8s forwards;
   }
 
   .lukom-car-smoke-3 {
-    animation: lukom-car-smoke 2s ease-out 3s forwards;
+    animation: lukom-car-smoke 2.4s ease-out 6s forwards;
   }
 
   .lukom-car-smoke-4 {
     width: 14px;
     height: 14px;
     bottom: 22px;
-    animation: lukom-car-smoke 2.2s ease-out 3.1s forwards;
+    animation: lukom-car-smoke 2.6s ease-out 6.15s forwards;
   }
 
   .lukom-car-smoke-5 {
     width: 10px;
     height: 10px;
     bottom: 24px;
-    animation: lukom-car-smoke 2.4s ease-out 3.2s forwards;
+    animation: lukom-car-smoke 2.8s ease-out 6.3s forwards;
+  }
+}
+
+@keyframes lukom-car-drive-mobile {
+  0% {
+    left: -52px;
+  }
+  90% {
+    left: calc(100% - 76px);
+  }
+  100% {
+    left: calc(100% - 70px);
   }
 }
 
@@ -356,15 +520,24 @@ body {
 
 .lukom-footer-logo {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.lukom-footer-logo > div {
+  width: 100%;
+}
+
+.lukom-footer-logo h4 {
+  margin: 0 0 6px;
 }
 
 .lukom-footer-logo-image {
   display: block;
   width: auto;
-  max-width: 72px;
-  height: 40px;
+  max-width: 52px;
+  height: 22px;
   object-fit: contain;
 }
 
@@ -1499,17 +1672,33 @@ body {
   color: #e2e8f0;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   gap: 18px;
   border: 1px solid rgba(148, 163, 184, 0.25);
   box-shadow: 0 20px 50px rgba(15, 23, 42, 0.35);
 }
 
+.lukom-kat-cta-panel > div:not(.lukom-kat-cta-icon) {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.lukom-kat-cta-panel .lukom-kat-block-list {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  list-style-position: inside;
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   .lukom-kat-cta-panel {
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     padding: 28px 32px;
-    gap: 28px;
+    gap: 22px;
   }
 }
 
@@ -1544,6 +1733,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  justify-content: center;
 }
 
 .lukom-kat-btn-primary {
@@ -1616,12 +1806,13 @@ body {
 
   .lukom-kat-cta-actions {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
   }
 
   .lukom-kat-btn-primary,
   .lukom-kat-btn-secondary {
     width: 100%;
+    max-width: 320px;
   }
 }
 

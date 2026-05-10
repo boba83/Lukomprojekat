@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Clock, Mail, MapPin, Phone, Printer, Smartphone } from "lucide-react";
+import {
+  Clock,
+  Mail,
+  MapPin,
+  Menu,
+  Phone,
+  Printer,
+  Smartphone,
+  X,
+} from "lucide-react";
 
 const navItems = ["Home", "Galerija", "Kategorija", "Dokumentacija", "Kontakt"];
 
 export default function Layout({ children, currentPageName }) {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <div className="lukom-app">
@@ -22,7 +36,7 @@ export default function Layout({ children, currentPageName }) {
               <span className="lukom-logo-sub">AUTODELOVI</span>
             </div>
           </Link>
-          <nav className="lukom-nav">
+          <nav className={"lukom-nav" + (menuOpen ? " lukom-nav-open" : "")}>
             {navItems.map((name) => {
               const path = name === "Home" ? "/" : `/${name}`;
               const isActive =
@@ -34,15 +48,32 @@ export default function Layout({ children, currentPageName }) {
                   className={
                     "lukom-nav-link" + (isActive ? " lukom-nav-link-active" : "")
                   }
+                  onClick={() => setMenuOpen(false)}
                 >
                   {name === "Home" ? "Naslovna" : name}
                 </Link>
               );
             })}
+            <a
+              href="tel:031863650"
+              className="lukom-call-button lukom-call-button-mobile"
+              onClick={() => setMenuOpen(false)}
+            >
+              Pozovite
+            </a>
           </nav>
-          <a href="tel:031863650" className="lukom-call-button">
+          <a href="tel:031863650" className="lukom-call-button lukom-call-button-desktop">
             Pozovite
           </a>
+          <button
+            type="button"
+            className="lukom-burger"
+            aria-label={menuOpen ? "Zatvori meni" : "Otvori meni"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
       </header>
       <main className="lukom-main">{children}</main>
