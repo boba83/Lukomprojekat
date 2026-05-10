@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Posle objavljivanja na stvarni domen dodati:
-# Sitemap: https://VAS-DOMEN.rs/sitemap.xml
+Sitemap: https://lukomautodelovi.com/sitemap.xml
