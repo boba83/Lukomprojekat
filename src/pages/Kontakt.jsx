@@ -130,7 +130,10 @@ export default function Kontakt() {
             </div>
 
             {/* DESNO: kontakt forma */}
-            <div className="lukom-contact-form-card">
+            <div
+              id="kontakt-forma-upita"
+              className="lukom-contact-form-card"
+            >
               <form className="lukom-contact-form" onSubmit={handleSubmit}>
                 <div className="lukom-contact-row lukom-contact-row-two">
                   <div className="lukom-contact-field">

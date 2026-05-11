@@ -442,7 +442,10 @@ export default function Kategorija() {
                       >
                         Pozovite 031 / 863-650
                       </a>
-                      <Link className="lukom-kat-btn-secondary" to="/Kontakt">
+                      <Link
+                        className="lukom-kat-btn-secondary"
+                        to="/Kontakt#kontakt-forma-upita"
+                      >
                         Forma za upit
                       </Link>
                     </div>
@@ -470,7 +473,10 @@ export default function Kategorija() {
                 <a className="lukom-kat-btn-primary" href={`tel:${TEL_FIX}`}>
                   Pozovite 031 / 863-650
                 </a>
-                <Link className="lukom-kat-btn-secondary" to="/Kontakt">
+                <Link
+                  className="lukom-kat-btn-secondary"
+                  to="/Kontakt#kontakt-forma-upita"
+                >
                   Forma za upit
                 </Link>
               </div>

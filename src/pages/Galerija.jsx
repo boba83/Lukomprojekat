@@ -37,18 +37,18 @@ const SHOP_GALLERY = [
   },
   {
     src: "/galerija/prodavnica-proizvodi-4.png",
-    alt: "Maskice i delovi izloženi u prodavnici",
-    label: "Izloženi proizvodi",
+    alt: "Auto kozmetika i razni sprejevi u prodavnici",
+    label: "Auto kozmetika i razni sprejevi",
   },
   {
     src: "/galerija/prodavnica-proizvodi-5.png",
-    alt: "Brisači i dodatni program u radnji",
-    label: "Brisači i dodatni program",
+    alt: "Patosnice, kadice i ostali prateći program u radnji",
+    label: "Patosnice, kadice i ostali prateći program",
   },
   {
     src: "/galerija/prodavnica-proizvodi-6.png",
-    alt: "Kutije sa delovima na policama",
-    label: "Delovi na stanju",
+    alt: "Brisači, miris i razna prateća oprema u radnji",
+    label: "Brisači, miris i razna prateća oprema",
   },
   {
     src: "/galerija/prodavnica-proizvodi-7.png",
